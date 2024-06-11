@@ -1,0 +1,61 @@
+# Inisialisasi array untuk menyimpan data transaksi
+transaksi = []
+
+def input_transaksi():
+    # Fungsi untuk menginput transaksi
+    tanggal = input("Masukkan tanggal transaksi: ")
+    kategori = input("Masukkan kategori transaksi (pemasukan/pengeluaran): ")
+    jumlah = float(input("Masukkan jumlah transaksi: "))
+    transaksi.append({"tanggal": tanggal, "kategori": kategori, "jumlah": jumlah})
+    print("Transaksi berhasil ditambahkan!")
+
+def tampilkan_transaksi():
+    # Fungsi untuk menampilkan semua transaksi
+    print("Data Transaksi:")
+    for i, data in enumerate(transaksi):
+        print(f"Transaksi {i+1}:")
+        print(f"Tanggal: {data['tanggal']}")
+        print(f"Kategori: {data['kategori']}")
+        print(f"Jumlah: {data['jumlah']}")
+        print()
+
+def hitung_pemasukan():
+    # Fungsi untuk menghitung dan menampilkan total pemasukan
+    total_pemasukan = sum(data["jumlah"] for data in transaksi if data["kategori"] == "pemasukan")
+    print(f"Total Pemasukan: {total_pemasukan:.2f}")
+
+def hitung_pengeluaran():
+    # Fungsi untuk menghitung dan menampilkan total pengeluaran
+    total_pengeluaran = sum(data["jumlah"] for data in transaksi if data["kategori"] == "pengeluaran")
+    print(f"Total Pengeluaran: {total_pengeluaran:.2f}")
+
+def hitung_saldo():
+    # Fungsi untuk menghitung dan menampilkan saldo akhir
+    total_pemasukan = sum(data["jumlah"] for data in transaksi if data["kategori"] == "pemasukan")
+    total_pengeluaran = sum(data["jumlah"] for data in transaksi if data["kategori"] == "pengeluaran")
+    saldo_akhir = total_pemasukan - total_pengeluaran
+    print(f"Saldo Akhir: {saldo_akhir:.2f}")
+
+while True:
+    print("Menu:")
+    print("1. Input transaksi")
+    print("2. Tampilkan semua transaksi")
+    print("3. Hitung total pemasukan")
+    print("4. Hitung total pengeluaran")
+    print("5. Hitung saldo akhir")
+    print("6. Keluar")
+    pilihan = input("Masukkan pilihan: ")
+    if pilihan == "1":
+        input_transaksi()
+    elif pilihan == "2":
+        tampilkan_transaksi()
+    elif pilihan == "3":
+        hitung_pemasukan()
+    elif pilihan == "4":
+        hitung_pengeluaran()
+    elif pilihan == "5":
+        hitung_saldo()
+    elif pilihan == "6":
+        break
+    else:
+        print("Pilihan tidak valid!")
