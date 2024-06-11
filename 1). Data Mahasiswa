@@ -1,0 +1,65 @@
+# Inisialisasi array untuk menyimpan data mahasiswa
+mahasiswa = []
+
+def input_data():
+    # Fungsi untuk menginput data mahasiswa
+    nama = input("Masukkan nama mahasiswa: ")
+    nim = input("Masukkan NIM mahasiswa: ")
+    prodi = input("Masukkan prodi mahasiswa: ")
+    nilai = float(input("Masukkan nilai mahasiswa: "))
+    mahasiswa.append({"nama": nama, "nim": nim, "prodi": prodi, "nilai": nilai})
+    print("Data mahasiswa berhasil ditambahkan!")
+
+def tampilkan_data():
+    # Fungsi untuk menampilkan data mahasiswa
+    print("Data Mahasiswa:")
+    for i, data in enumerate(mahasiswa):
+        print(f"Mahasiswa {i+1}:")
+        print(f"Nama: {data['nama']}")
+        print(f"NIM: {data['nim']}")
+        print(f"Prodi: {data['prodi']}")
+        print(f"Nilai: {data['nilai']}")
+        print()
+
+def hitung_rata_rata():
+    # Fungsi untuk menghitung dan menampilkan rata-rata nilai mahasiswa
+    total_nilai = sum(data["nilai"] for data in mahasiswa)
+    rata_rata = total_nilai / len(mahasiswa)
+    print(f"Rata-rata nilai mahasiswa: {rata_rata:.2f}")
+
+def cari_nilai_extrem():
+    # Fungsi untuk mencari dan menampilkan mahasiswa dengan nilai tertinggi dan terendah
+    nilai_tertinggi = max(mahasiswa, key=lambda x: x["nilai"])
+    nilai_terendah = min(mahasiswa, key=lambda x: x["nilai"])
+    print("Mahasiswa dengan nilai tertinggi:")
+    print(f"Nama: {nilai_tertinggi['nama']}")
+    print(f"NIM: {nilai_tertinggi['nim']}")
+    print(f"Prodi: {nilai_tertinggi['prodi']}")
+    print(f"Nilai: {nilai_tertinggi['nilai']}")
+    print()
+    print("Mahasiswa dengan nilai terendah:")
+    print(f"Nama: {nilai_terendah['nama']}")
+    print(f"NIM: {nilai_terendah['nim']}")
+    print(f"Prodi: {nilai_terendah['prodi']}")
+    print(f"Nilai: {nilai_terendah['nilai']}")
+
+while True:
+    print("Menu:")
+    print("1. Input data mahasiswa")
+    print("2. Tampilkan data mahasiswa")
+    print("3. Hitung rata-rata nilai")
+    print("4. Cari mahasiswa dengan nilai tertinggi dan terendah")
+    print("5. Keluar")
+    pilihan = input("Masukkan pilihan: ")
+    if pilihan == "1":
+        input_data()
+    elif pilihan == "2":
+        tampilkan_data()
+    elif pilihan == "3":
+        hitung_rata_rata()
+    elif pilihan == "4":
+        cari_nilai_extrem()
+    elif pilihan == "5":
+        break
+    else:
+        print("Pilihan tidak valid!")
